@@ -25,6 +25,7 @@ CHANNELS = [
     {"name": "Kanal 4", "link": "https://t.me/+nJuibwCPd0Q4NmE6", "id": -1002920857610}
 ]
 
+# Kino fayllari va file_id lar
 MOVIES = {
     "111": "BAACAgEAAxkBAAMFaN0nSEYPOBm92m-gthAtpMhVWvQAAmgFAAKwbLlGCLXVfcF8-K42BA",
     "112": "BAACAgUAAxkBAAMJaN0nuudyinyyd1sywNXwKRyXad8AArAWAAIau7hWsTfVTjPPf2w2BA",
@@ -33,6 +34,13 @@ MOVIES = {
     "115": "BAACAgUAAxkBAAMMaN0nx775kKpW3HrGmmWyolc0htMAAkUYAAJCGMBWJvA6qEiAc-c2BA",
     "116": "BAACAgUAAxkBAAMOaN0nx5LVe55nJ2UuKbQEPQABChlYAAJPGAACQhjIVilo_HEewLmkNgQ"
 }
+
+# Kino caption (hamma kinoga bir xil)
+CAPTION = """🎬 Alice in Borderland
+
+🔑 Janr: Triller | Fantastika | Hayot-mamot
+📺 Fasllar: 2 (Netflix Original)
+⭐ Reyting: Juda yuqori, tomoshabinlar tomonidan iliq kutib olingan."""
 
 PENDING_FILE = "pending.json"
 
@@ -148,18 +156,7 @@ async def receive_code(message: types.Message, state: FSMContext):
     if pending.get(user_key) and pending[user_key].get("confirmed"):
         if code in MOVIES:
             file_id = MOVIES[code]
-
-            # Hamma kinoga bitta umumiy caption
-            caption = (
-                "🎬 Alice in Borderland\n\n"
-                "🔑 Janr: Triller | Fantastika | Hayot-mamot\n"
-                "📺 Fasllar: 2 (Netflix Original)\n"a
-                "⭐ Reyting: Juda yuqori, tomoshabinlar tomonidan iliq kutib olingan."
-            )
-
-            # Video yuborish va caption qo‘shish
-            await message.answer_video(file_id, caption=caption)
-
+            await message.answer_document(file_id, caption=CAPTION)  # caption qo'shildi
             await bot.send_message(
                 ADMIN_ID,
                 f"🎬 Kino yuborildi: {message.from_user.full_name} ({user_key}) -> kod {code}"
