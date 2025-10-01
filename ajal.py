@@ -1,4 +1,3 @@
-
 import asyncio
 import logging
 import json
@@ -149,12 +148,22 @@ async def receive_code(message: types.Message, state: FSMContext):
     if pending.get(user_key) and pending[user_key].get("confirmed"):
         if code in MOVIES:
             file_id = MOVIES[code]
-            await message.answer_document(file_id)
+
+            # Hamma kinoga bitta umumiy caption
+            caption = (
+                "🎬 Alice in Borderland\n\n"
+                "🔑 Janr: Triller | Fantastika | Hayot-mamot\n"
+                "📺 Fasllar: 2 (Netflix Original)\n"a
+                "⭐ Reyting: Juda yuqori, tomoshabinlar tomonidan iliq kutib olingan."
+            )
+
+            # Video yuborish va caption qo‘shish
+            await message.answer_video(file_id, caption=caption)
+
             await bot.send_message(
                 ADMIN_ID,
                 f"🎬 Kino yuborildi: {message.from_user.full_name} ({user_key}) -> kod {code}"
             )
-            # FSM holati saqlanadi, foydalanuvchi yana kod yuborishi mumkin
             return
         else:
             await message.answer("❌ Noto‘g‘ri kod! Iltimos, 111-116 orasidan birini yozing.")
