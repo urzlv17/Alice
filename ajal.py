@@ -136,7 +136,7 @@ async def confirmed_request(callback: types.CallbackQuery, state: FSMContext):
     pending[user_key] = {"confirmed": True, "joined_channels": list(joined)}
     save_pending(pending)
 
-    await callback.message.edit_text("✅ Tabriklaymiz! Endi kino kodini yuboring (masalan: 2015).", reply_markup=None)
+    await callback.message.edit_text("✅ Tabriklaymiz! Endi kino kodini yuboring (masalan: 111).", reply_markup=None)
     await state.set_state(CinemaStates.waiting_for_code)
 
 # Kino kodi qabul qilish
@@ -157,7 +157,7 @@ async def receive_code(message: types.Message, state: FSMContext):
             # FSM holati saqlanadi, foydalanuvchi yana kod yuborishi mumkin
             return
         else:
-            await message.answer("❌ Noto‘g‘ri kod! Iltimos, 2000–2030 orasidan birini yozing.")
+            await message.answer("❌ Noto‘g‘ri kod! Iltimos, 111-116 orasidan birini yozing.")
             return
     else:
         await message.answer("⚠️ Avval barcha kanallarga obuna bo'ling va 'Men obuna bo‘ldim' tugmasini bosing.")
