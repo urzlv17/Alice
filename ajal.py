@@ -40,8 +40,8 @@ CAPTION = """🎬 Ajal O'yini
 
 🔑 Janr: Triller | Fantastika | Hayot-mamot
 📺 Fasl: 3 (Netflix Original)
-⭐ Reyting: Juda yuqori, tomoshabinlar tomonidan iliq kutib olingan."""
-🌏 Til: Uzbek tilida
+⭐ Reyting: Juda yuqori, tomoshabinlar tomonidan iliq kutib olingan.
+🌏 Til: Uzbek tilida"""
 PENDING_FILE = "pending.json"
 
 # Bot & dispatcher
