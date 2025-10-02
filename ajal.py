@@ -36,12 +36,12 @@ MOVIES = {
 }
 
 # Kino caption (hamma kinoga bir xil)
-CAPTION = """🎬 Alice in Borderland
+CAPTION = """🎬 Ajal O'yini
 
 🔑 Janr: Triller | Fantastika | Hayot-mamot
-📺 Fasllar: 2 (Netflix Original)
+📺 Fasl: 3 (Netflix Original)
 ⭐ Reyting: Juda yuqori, tomoshabinlar tomonidan iliq kutib olingan."""
-
+🌏 Til: Uzbek tilida
 PENDING_FILE = "pending.json"
 
 # Bot & dispatcher
