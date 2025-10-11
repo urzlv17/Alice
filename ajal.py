@@ -1,3 +1,4 @@
+
 import asyncio
 import logging
 import json
@@ -22,9 +23,8 @@ CHANNELS = [
     {"name": "Kanal 1", "link": "https://t.me/+g5pGoUg7fbkwNzM1", "id": -1003000935874}
 ]
 
-# Kino fayllari va file_id lar
 MOVIES = {
-    "111": "BAACAgEAAxkBAAMFaN0nSEYPOBm92m-gthAtpMhVWvQAAmgFAAKwbLlGCLXVfcF8-K42BA",
+    "111": "BAACAgEAAxkBAAMFaN0nSEYPOBm92m-gthAtpMhVWvQAAmgFAAKwbLlGCLXVfcF8",
     "112": "BAACAgUAAxkBAAMJaN0nuudyinyyd1sywNXwKRyXad8AArAWAAIau7hWsTfVTjPPf2w2BA",
     "113": "BAACAgUAAxkBAAMLaN0nx2pXJyIfpLMS_vQWF5JzxsMAArMWAAIau7hWasHhn8Rimjs2BA",
     "114": "BAACAgEAAxkBAAMNaN0nx9gxQ5Bz5SoMYU8pbG5IZIsAAiIHAAKwBcBG1yEOdBkWw2I2BA",
@@ -32,13 +32,6 @@ MOVIES = {
     "116": "BAACAgUAAxkBAAMOaN0nx5LVe55nJ2UuKbQEPQABChlYAAJPGAACQhjIVilo_HEewLmkNgQ"
 }
 
-# Kino caption (hamma kinoga bir xil)
-CAPTION = """🎬 Ajal O'yini
-
-🔑 Janr: Triller | Fantastika | Hayot-mamot
-📺 Fasl: 3 (Netflix Original)
-⭐ Reyting: Juda yuqori, tomoshabinlar tomonidan iliq kutib olingan.
-🌏 Til: Uzbek tilida"""
 PENDING_FILE = "pending.json"
 
 # Bot & dispatcher
@@ -153,14 +146,15 @@ async def receive_code(message: types.Message, state: FSMContext):
     if pending.get(user_key) and pending[user_key].get("confirmed"):
         if code in MOVIES:
             file_id = MOVIES[code]
-            await message.answer_document(file_id, caption=CAPTION)  # caption qo'shildi
+            await message.answer_document(file_id)
             await bot.send_message(
                 ADMIN_ID,
                 f"🎬 Kino yuborildi: {message.from_user.full_name} ({user_key}) -> kod {code}"
             )
+            # FSM holati saqlanadi, foydalanuvchi yana kod yuborishi mumkin
             return
         else:
-            await message.answer("❌ Noto‘g‘ri kod! Iltimos, 111-116 orasidan birini yozing.")
+            await message.answer("❌ Noto‘g‘ri kod! Iltimos, 111-117 orasidan birini yozing.")
             return
     else:
         await message.answer("⚠️ Avval barcha kanallarga obuna bo'ling va 'Men obuna bo‘ldim' tugmasini bosing.")
