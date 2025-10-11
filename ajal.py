@@ -19,10 +19,7 @@ ADMIN_ID = int(os.getenv("ADMIN_ID", "6067594310"))
 
 # Kanal va kino sozlamalari
 CHANNELS = [
-    {"name": "Kanal 1", "link": "https://t.me/+0HH1L-dHrLdmMTUy", "id": -1003053807994},
-    {"name": "Kanal 2", "link": "https://t.me/+_tOVOccPH_cwMTcy", "id": -1002758258380},
-    {"name": "Kanal 3", "link": "https://t.me/+24H2NggcXrFmNjUy", "id": -1002976392716},
-    {"name": "Kanal 4", "link": "https://t.me/+nJuibwCPd0Q4NmE6", "id": -1002920857610}
+    {"name": "Kanal 1", "link": "https://t.me/+g5pGoUg7fbkwNzM1", "id": -1003000935874}
 ]
 
 # Kino fayllari va file_id lar
